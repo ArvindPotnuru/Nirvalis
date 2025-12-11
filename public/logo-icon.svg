@@ -1,0 +1,36 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded square background -->
+  <rect width="32" height="32" rx="6" fill="white"/>
+  
+  <!-- Lightbulb main body -->
+  <path d="M16 7C12.7 7 10 9.7 10 13C10 15.2 11.2 17 13 17.8V21C13 21.6 13.4 22 14 22H18C18.6 22 19 21.6 19 21V17.8C20.8 17 22 15.2 22 13C22 9.7 19.3 7 16 7Z" stroke="#7453C5" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Lightbulb base/socket -->
+  <rect x="13" y="21" width="6" height="1.5" fill="#7453C5"/>
+  <rect x="13.5" y="22.5" width="5" height="1.5" fill="#7453C5"/>
+  <path d="M12 24.5C12 24.5 13 25.5 16 25.5C19 25.5 20 24.5 20 24.5" stroke="#7453C5" stroke-width="1.4" fill="none"/>
+  
+  <!-- Letter N inside bulb (filament style) -->
+  <path d="M13.5 15.5L13.5 18.5M13.5 15.5L16.5 18.5M16.5 15.5L16.5 18.5" stroke="#7453C5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Starburst (4-pointed star) -->
+  <g transform="translate(19.5, 13.5)">
+    <line x1="0" y1="-1.2" x2="0" y2="1.2" stroke="#7453C5" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="-1.2" y1="0" x2="1.2" y2="0" stroke="#7453C5" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="-0.85" y1="-0.85" x2="0.85" y2="0.85" stroke="#7453C5" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="0.85" y1="-0.85" x2="-0.85" y2="0.85" stroke="#7453C5" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Radiating dashed lines from top and sides -->
+  <line x1="16" y1="5" x2="16" y2="3" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="19.5" y1="6" x2="21" y2="4.5" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="22" y1="9" x2="23.5" y2="8" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="23" y1="12.5" x2="24.5" y2="12.5" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="22" y1="16" x2="23.5" y2="17" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="19.5" y1="19" x2="21" y2="20.5" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="12.5" y1="6" x2="11" y2="4.5" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="10" y1="9" x2="8.5" y2="8" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="9" y1="12.5" x2="7.5" y2="12.5" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="10" y1="16" x2="8.5" y2="17" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+  <line x1="12.5" y1="19" x2="11" y2="20.5" stroke="#7453C5" stroke-width="0.8" stroke-dasharray="0.8 0.8" stroke-linecap="round"/>
+</svg>
