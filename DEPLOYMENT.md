@@ -2,28 +2,54 @@
 
 ## Domain Registration Options
 
+### ✅ Domain Availability Status
+
+**nirvalis.com** is currently **AVAILABLE** for registration!
+
+We recommend registering it immediately as domain availability can change quickly. You can also check alternative TLDs like `.io`, `.net`, `.org`, and `.health` for brand protection.
+
+See `DOMAIN_CONFIG.md` for detailed domain availability information and registration checklist.
+
 ### Recommended Domain Registrars:
 
-1. **Namecheap** (https://www.namecheap.com/)
-   - User-friendly interface
-   - Free WHOIS privacy protection
-   - Good customer support
-   - Price: ~$10-15/year for .com domains
+#### ⭐ **Cloudflare Registrar** (BEST VALUE - Recommended)
+- **At-cost pricing** - No markup, pay exactly what registry charges
+- **Free WHOIS privacy** - Included with all domains
+- **Transparent pricing** - Same price for first year and renewal (~$9.77/year)
+- **Security features** - Free DNSSEC, DDoS protection
+- **No upsells** - Clean, simple interface
+- **Best for**: Developers, tech startups, anyone who wants lowest cost
+- **Link**: https://www.cloudflare.com/products/registrar/
 
-2. **Google Domains** (https://domains.google/)
-   - Simple and clean interface
-   - Integrated with Google services
-   - Price: ~$12/year for .com domains
+#### ⭐ **Namecheap** (BEST FOR BEGINNERS)
+- **User-friendly interface** - Very easy to use
+- **Free WHOIS privacy** - Included
+- **Good customer support** - 24/7 live chat
+- **Transparent pricing** - Clear renewal rates (~$13.98/year)
+- **No aggressive upsells** - Clean checkout
+- **Best for**: Beginners, non-technical users, startups
+- **Link**: https://www.namecheap.com/
 
-3. **Cloudflare Registrar** (https://www.cloudflare.com/products/registrar/)
-   - At-cost pricing (no markup)
-   - Free WHOIS privacy
-   - Price: ~$8-10/year for .com domains
+#### **Porkbun** (Great Value Alternative)
+- **Very low prices** - Often cheaper than competitors (~$9.43/year)
+- **Free WHOIS privacy** - Included
+- **Modern interface** - Clean and simple
+- **Best for**: Budget-conscious users
+- **Link**: https://porkbun.com/
 
-4. **GoDaddy** (https://www.godaddy.com/)
-   - Popular and well-known
-   - Often has promotional pricing
-   - Price: ~$12-15/year for .com domains
+#### **Hover** (Simple & Clean)
+- **No upsells** - Simple approach
+- **Free WHOIS privacy** - Included
+- **Transparent pricing** (~$12.99/year)
+- **Best for**: Users who want simplicity
+
+#### ⚠️ **GoDaddy** (Not Recommended)
+- **Expensive renewals** - Big price jump after first year ($17.99/year)
+- **WHOIS privacy costs extra** - Not included (~$9.99/year)
+- **Aggressive upsells** - Many add-ons pushed
+- **Only consider if**: You need their specific hosting/services
+
+**See `DOMAIN_REGISTRAR_COMPARISON.md` for detailed comparison.**
 
 ## Hosting Options
 

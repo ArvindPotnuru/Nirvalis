@@ -1,15 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState(''); // 'idle', 'loading', 'success', 'error'
+  const [message, setMessage] = useState('');
+  const [waitlistCount, setWaitlistCount] = useState(null); // null = loading, number = count
 
-  const handleSubmit = (e) => {
+  // Fetch waitlist count on component mount
+  useEffect(() => {
+    const fetchWaitlistCount = async () => {
+      try {
+        // Try to fetch from API endpoint (works in production on Vercel)
+        // This will work when deployed to Vercel
+        const apiUrl = '/api/waitlist-count';
+        const response = await fetch(apiUrl);
+        
+        if (response.ok) {
+          const data = await response.json();
+          const apiCount = data.count || 0;
+          // Use API count if available, otherwise fallback to localStorage
+          if (apiCount > 0) {
+            setWaitlistCount(apiCount);
+            localStorage.setItem('nirvalis_waitlist_count', apiCount.toString());
+          } else {
+            // Fallback: check localStorage for cached count
+            const cachedCount = localStorage.getItem('nirvalis_waitlist_count');
+            setWaitlistCount(cachedCount ? parseInt(cachedCount, 10) : 0);
+          }
+        } else {
+          // Fallback: check localStorage for cached count
+          const cachedCount = localStorage.getItem('nirvalis_waitlist_count');
+          setWaitlistCount(cachedCount ? parseInt(cachedCount, 10) : 0);
+        }
+      } catch (error) {
+        // API not available (e.g., local development), use localStorage
+        const cachedCount = localStorage.getItem('nirvalis_waitlist_count');
+        setWaitlistCount(cachedCount ? parseInt(cachedCount, 10) : 0);
+      }
+    };
+
+    fetchWaitlistCount();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Email submitted:', email);
-    alert('Thank you for joining the waitlist!');
-    setEmail('');
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      // Formspree endpoint - using form ID directly
+      const formspreeFormId = 'xojqydrz';
+      const formspreeEndpoint = `https://formspree.io/f/${formspreeFormId}`;
+      
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'New Waitlist Signup - Nirvalis',
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setMessage('Thank you for joining the waitlist! We\'ll be in touch soon.');
+        setEmail('');
+        // Increment waitlist count on successful submission
+        setWaitlistCount(prev => {
+          const newCount = (prev !== null ? prev + 1 : 1);
+          // Cache in localStorage for persistence
+          localStorage.setItem('nirvalis_waitlist_count', newCount.toString());
+          return newCount;
+        });
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to submit');
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage(error.message || 'Something went wrong. Please try again or contact us directly.');
+      console.error('Waitlist submission error:', error);
+    }
+  };
+
+  // Format number with commas (e.g., 1234 -> 1,234)
+  const formatCount = (count) => {
+    if (count === null) return '';
+    return count.toLocaleString('en-US');
   };
 
   return (
@@ -41,6 +122,28 @@ function App() {
             An AI-powered health intelligence assistant that gives every member a lifelong, 
             member-owned health graph and catches early signals before symptoms surface.
           </p>
+        </section>
+
+        {/* Video Section */}
+        <section className="video-section">
+          <div className="video-container">
+            <h2 className="video-section-title">See Nirvalis in Action</h2>
+            <p className="video-section-subtitle">
+              Discover how Nirvalis transforms your health journey
+            </p>
+            <div className="video-wrapper">
+              <div className="video-embed">
+                <iframe
+                  allow="autoplay; gyroscope;"
+                  allowFullScreen
+                  referrerPolicy="strict-origin"
+                  src="https://www.kapwing.com/e/69527fe767424051770dd42a"
+                  title="Nirvalis - Health Intelligence Partner"
+                  className="video-iframe"
+                ></iframe>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* What is Nirvalis */}
@@ -170,6 +273,11 @@ function App() {
             Be the first to experience Nirvalis. We're opening our private beta soon.
           </p>
           <h2 className="waitlist-title">Join the Nirvalis Waitlist</h2>
+          {waitlistCount !== null && waitlistCount > 0 && (
+            <p className="waitlist-count">
+              Join {formatCount(waitlistCount)} {waitlistCount === 1 ? 'other' : 'others'} on the waitlist
+            </p>
+          )}
           <form className="waitlist-form" onSubmit={handleSubmit}>
             <input
               type="email"
@@ -178,20 +286,35 @@ function App() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              disabled={status === 'loading'}
             />
-            <button type="submit" className="join-button">
-              Join the Waitlist
+            <button 
+              type="submit" 
+              className="join-button"
+              disabled={status === 'loading' || status === 'success'}
+            >
+              {status === 'loading' ? 'Joining...' : status === 'success' ? 'Joined!' : 'Join the Waitlist'}
             </button>
+            {message && (
+              <div className={`waitlist-message ${status === 'success' ? 'success' : 'error'}`}>
+                {message}
+              </div>
+            )}
           </form>
+          <p className="waitlist-privacy">
+            By joining, you agree to receive updates about Nirvalis. We respect your privacy.
+          </p>
         </section>
       </main>
 
       {/* Footer */}
       <footer className="footer">
         <div className="footer-container">
-          <div className="footer-left">BBA</div>
+          <div className="footer-left">
+            <span className="footer-founders">Founded by Amruthavalli Bethanabatla & Arvind Potnuru</span>
+          </div>
           <div className="footer-right">
-            Nirvalis™ Health Intelligence Partner © 2025 Nirvalis Inc. All rights reserved.
+            Nirvalis™ Health Intelligence Partner © 2025-{new Date().getFullYear()} Nirvalis Inc. All rights reserved.
           </div>
         </div>
       </footer>
