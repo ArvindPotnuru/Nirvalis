@@ -35,10 +35,23 @@ This creates an optimized production build in the `build` folder.
 
 ```
 nirvalis/
+├── api/
+│   └── waitlist-count.js    # Vercel serverless: waitlist count
 ├── public/
 │   ├── index.html
 │   └── manifest.json
 ├── src/
+│   ├── components/
+│   │   ├── Header.js
+│   │   ├── Hero.js
+│   │   ├── VideoSection.js
+│   │   ├── Section.js
+│   │   ├── PartnersSection.js
+│   │   ├── FeaturesSection.js
+│   │   ├── BenefitsList.js
+│   │   ├── WaitlistSection.js
+│   │   ├── Footer.js
+│   │   └── index.js
 │   ├── App.js
 │   ├── App.css
 │   ├── index.js
