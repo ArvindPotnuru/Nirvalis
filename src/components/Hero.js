@@ -6,7 +6,7 @@ function Hero() {
       <h1 className="hero-title">Nirvalis - Health Intelligence Partner</h1>
       <p className="hero-tagline">Your health. Your data. Your advocate.</p>
       <p className="hero-subtitle">
-        Creating healthier generations, starting with you.
+        Creating healthier generations—starting with you.
       </p>
       <p className="hero-description">
         An AI-powered health intelligence assistant that gives every member a lifelong,
